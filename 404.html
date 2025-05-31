@@ -1,1 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Redirecting...</title>
+    <script>
+      const baseURL = "http://your-s3-bucket.s3-website-region.amazonaws.com/";
 
+      // Get the full path (excluding domain)
+      const path = window.location.pathname.replace(/^\/+|\/+$/g, ''); // "ab"
+
+      if (path) {
+        window.location.href = baseURL + path;
+      } else {
+        document.write("No redirect path found.");
+      }
+    </script>
+  </head>
+  <body>
+    <p>Redirecting...</p>
+  </body>
+</html>
