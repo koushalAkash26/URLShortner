@@ -1,22 +1,26 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Redirecting...</title>
-    <script>
-      const baseURL = "http://mytestcoolbucket-31-5-2025.s3-website-us-east-1.amazonaws.com/";
+<head>
+  <meta charset="UTF-8">
+  <title>Redirecting...</title>
+  <script>
+    // S3 static website base URL
+    const baseURL = "http://mytestcoolbucket-31-5-2025.s3-website-us-east-1.amazonaws.com/";
 
-      // Get the full path (excluding domain)
-      const path = window.location.pathname.replace(/^\/+|\/+$/g, ''); // "ab"
+    // Get the full path after /URLShortner/, e.g., "ab" in "/URLShortner/ab"
+    const path = window.location.pathname.replace(/^\/+|\/+$/g, ''); // full path like "URLShortner/ab"
 
-      if (path) {
-        window.location.href = baseURL + path;
-      } else {
-        document.write("No redirect path found.");
-      }
-    </script>
-  </head>
-  <body>
-    <p>Redirecting...</p>
-  </body>
+    const redirectKey = path.replace(/^URLShortner\//, ''); // strip "URLShortner/" prefix
+
+    if (redirectKey) {
+      window.location.href = baseURL + redirectKey;
+    } else {
+      document.write("<h1>Not a valid short URL</h1>");
+    }
+  </script>
+</head>
+<body>
+  <p>Redirecting...</p>
+</body>
 </html>
+
